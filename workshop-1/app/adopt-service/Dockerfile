@@ -16,4 +16,4 @@ EXPOSE 80
     
 ENTRYPOINT ["python3"]
 
-CMD ["mysfits_like.py"]
+CMD ["mysfits_adopt.py"]

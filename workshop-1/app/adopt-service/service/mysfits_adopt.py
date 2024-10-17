@@ -17,18 +17,17 @@ def health_check_response():
     return jsonify({'message' : 'Nothing here, used for health check.'})
 # indicate that the provided mysfit should be marked as liked.
 
-def process_like_request():
-    print('Like processed.', file=sys.stderr)
+def process_adopt_request():
+    print('Adopt processed.', file=sys.stderr)
 
-def fulfill_like(mysfit_id):
-    url = urlparse('http://{}/mysfits/{}/fulfill-like'.format(os.environ['MONOLITH_URL'], mysfit_id))
+def fulfill_adopt(mysfit_id):
+    url = urlparse('http://{}/mysfits/{}/fulfill-adopt'.format(os.environ['MONOLITH_URL'], mysfit_id))
     return requests.post(url=url.geturl())
 
-
-@app.route("/mysfits/<mysfit_id>/like", methods=['POST'])
+@app.route("/mysfits/<mysfit_id>/adopt", methods=['POST'])
 def like_mysfit(mysfit_id):
-    process_like_request()
-    service_response = fulfill_like(mysfit_id)
+    process_adopt_request()
+    service_response = fulfill_adopt(mysfit_id)
 
     flask_response = Response(service_response)
     flask_response.headers["Content-Type"] = "application/json"

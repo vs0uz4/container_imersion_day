@@ -1,7 +1,10 @@
+from __future__ import print_function
+
 from flask import Flask, jsonify, json, Response, request
 from flask_cors import CORS
 import mysfitsTableClient
 import os
+import sys
 
 app = Flask(__name__)
 CORS(app)
@@ -10,7 +13,7 @@ CORS(app)
 # sent to the service root will receive a healthy response.
 @app.route("/")
 def healthCheckResponse():
-    return jsonify({'message' : 'Nothing here, used for health check. Try /mysfits instead.'})
+    return jsonify({'message' : 'Nothing here, used for health check.'})
 
 # Retrive mysfits from DynamoDB based on provided querystring params, or all
 # mysfits if no querystring is present.
@@ -34,7 +37,7 @@ def getMysfits():
     return flaskResponse
 
 def process_like_request():
-    print('Like processed.')
+    print('Like processed.', file=sys.stderr)
 
 # retrieve the full details for a specific mysfit with their provided path
 # parameter as their ID.
@@ -57,7 +60,7 @@ def likeMysfit(mysfit_id):
     return flaskResponse
 
 # @app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
-# def likeMysfit(mysfit_id):
+# def fulfillLikeMysfit(mysfit_id):
 #     serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
 #     flaskResponse = Response(serviceResponse)
 #     flaskResponse.headers["Content-Type"] = "application/json"

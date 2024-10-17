@@ -5,7 +5,12 @@ set -eu
 if [[ $# -eq 1 ]]; then
   BUCKET_NAME="$1"
 else
-  BUCKET_NAME=$(jq < cfn-output.json -er '.SiteBucket')
+  BUCKET_NAME=$(jq < cfn-output.json -r '.SiteBucket // empty')
+fi
+
+if [[ -z $BUCKET_NAME ]]; then
+  echo "Unable to determine S3 bucket to use. Ensure that it is returned as an output from CloudFormation or passed as the first argument to the script."
+  exit 1
 fi
 
 API_ENDPOINT=$(jq < cfn-output.json -er '.LoadBalancerDNS')

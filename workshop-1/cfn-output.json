@@ -1,0 +1,11 @@
+{
+  "EKSCloud9EnvId": "https://us-east-2.console.aws.amazon.com/cloud9/ide/a8857b72d813450cbbf16f80837f601b?region=us-east-2",
+  "LoadBalancerDNS": "alb-832172068916-589445464.us-east-2.elb.amazonaws.com",
+  "DynamoTable": "Table-832172068916",
+  "ProfileName": "cfn-container-MythicalProfile-xROKoHpqCzQ5",
+  "SiteBucket": "cfn-container-mythicalbucket-iwwdwqejc2tn",
+  "S3WebsiteURL": "http://cfn-container-mythicalbucket-iwwdwqejc2tn.s3-website.us-east-2.amazonaws.com",
+  "likeURI": "832172068916.dkr.ecr.us-east-2.amazonaws.com/cfn-container-like-b934vym40anm:latest",
+  "adoptURI": "832172068916.dkr.ecr.us-east-2.amazonaws.com/cfn-container-adopt-we23u4oi23u:latest",
+  "monolitURI": "832172068916.dkr.ecr.us-east-2.amazonaws.com/cfn-container-mono-bw40ti8ir24x:latest"
+}

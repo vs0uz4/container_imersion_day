@@ -36,44 +36,33 @@ def getMysfits():
 
     return flaskResponse
 
-def process_like_request():
-    print('Like processed.', file=sys.stderr)
-
 # retrieve the full details for a specific mysfit with their provided path
 # parameter as their ID.
 @app.route("/mysfits/<mysfit_id>", methods=['GET'])
 def getMysfit(mysfit_id):
     serviceResponse = mysfitsTableClient.getMysfit(mysfit_id)
-
+    
     flaskResponse = Response(serviceResponse)
     flaskResponse.headers["Content-Type"] = "application/json"
 
     return flaskResponse
 
-# increment the number of likes for the provided mysfit.
-@app.route("/mysfits/<mysfit_id>/like", methods=['POST'])
-def likeMysfit(mysfit_id):
+# indicate that the provided mysfit should be fulfill-like mysfit.
+@app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
+def fulfillLikeMysfit(mysfit_id):
     serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
-    process_like_request()
+    
     flaskResponse = Response(serviceResponse)
     flaskResponse.headers["Content-Type"] = "application/json"
     return flaskResponse
 
-# @app.route("/mysfits/<mysfit_id>/fulfill-like", methods=['POST'])
-# def fulfillLikeMysfit(mysfit_id):
-#     serviceResponse = mysfitsTableClient.likeMysfit(mysfit_id)
-#     flaskResponse = Response(serviceResponse)
-#     flaskResponse.headers["Content-Type"] = "application/json"
-#     return flaskResponse
-
-# indicate that the provided mysfit should be marked as adopted.
-@app.route("/mysfits/<mysfit_id>/adopt", methods=['POST'])
-def adoptMysfit(mysfit_id):
+# indicate that the provided mysfit should be fulfill-adopt mysfit.
+@app.route("/mysfits/<mysfit_id>/fulfill-adopt", methods=['POST'])
+def fulfillAdoptMysfit(mysfit_id):
     serviceResponse = mysfitsTableClient.adoptMysfit(mysfit_id)
-
+    
     flaskResponse = Response(serviceResponse)
     flaskResponse.headers["Content-Type"] = "application/json"
-
     return flaskResponse
 
 # Run the service on the local server it has been deployed to,
